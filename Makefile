@@ -6,8 +6,6 @@ lint:
 	@echo
 	isort --diff -c .
 	@echo
-	blue --check --diff --color .
-	@echo
 	flake8 .
 	@echo
 	mypy .
