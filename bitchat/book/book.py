@@ -18,7 +18,9 @@ class BookInterface(metaclass=ABCMeta):
 
 
 class SingleBookInstanceViolation(BaseException):
-    ...
+
+    def __init__(self) -> None:
+        super().__init__("Single Book Instance Violation")
 
 
 class Book(BookInterface):
@@ -54,3 +56,6 @@ class Book(BookInterface):
         # Each book contains a list of messages, these are encrypted message
         # with addresses
         self.__messages: list[Type[Message]] = []
+
+        # Assigning __instance to the newly created one
+        Book.__instance = self

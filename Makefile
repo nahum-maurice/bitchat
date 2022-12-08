@@ -9,6 +9,8 @@ lint:
 	@echo
 	mypy -p bitchat
 	@echo
+	mypy -p tests
+	@echo
 	bandit -r bitchat/
 	@echo
 	pip-audit --ignore-vuln GHSA-43fp-rhv2-5gv8

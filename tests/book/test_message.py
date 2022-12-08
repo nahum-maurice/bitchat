@@ -4,7 +4,7 @@ receiver = "0x9238494ffac739347af9de9359abfd24"
 sender = "0x9238494ffa8929347af9de9352957d24"
 
 
-def header_correct():
+def header_correct() -> MessageHeader:
     header = MessageHeader(
         receiver=receiver,
         sender=sender,
@@ -14,7 +14,7 @@ def header_correct():
     return header
 
 
-def message_correct():
+def message_correct() -> Message:
     header = MessageHeader(
         receiver=receiver,
         sender=sender,
@@ -27,7 +27,7 @@ def message_correct():
     return msg
 
 
-def test():
+def test() -> None:
     header = header_correct()
     msg = message_correct()
 
