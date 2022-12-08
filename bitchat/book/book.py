@@ -17,6 +17,10 @@ class BookInterface(metaclass=ABCMeta):
         ...
 
 
+class SingleBookInstanceViolation(BaseException):
+    ...
+
+
 class Book(BookInterface):
 
     # One single instance of the class
@@ -31,7 +35,7 @@ class Book(BookInterface):
         # the master node. Therefore, this class follows the pattern of
         # Singleton
         if Book.__instance is not None:
-            raise Exception("SingleBookInstanceViolation")
+            raise SingleBookInstanceViolation
 
         # The ID (__id) of a book is its primary identifier. It is used to
         # keep track of the different instances of the Book that handles

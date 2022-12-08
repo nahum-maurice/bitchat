@@ -1,6 +1,6 @@
 import pytest
 
-from bitchat.book.book import Book
+from bitchat.book.book import Book, SingleBookInstanceViolation
 
 
 def book_correct() -> None:
@@ -10,6 +10,6 @@ def book_correct() -> None:
 
 
 def test_book() -> None:
-    with pytest.raises("SingleBookInstanceViolation"):
+    with pytest.raises(SingleBookInstanceViolation):
         # Should not allow multiple instances
         book_correct()
