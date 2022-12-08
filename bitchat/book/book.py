@@ -7,6 +7,7 @@ shared by all the nodes in the network.
 from abc import ABCMeta, abstractmethod
 from typing import Type
 
+from ..errors.singleBookInstanceViolation import SingleBookInstanceViolation
 from .message import Message
 
 
@@ -15,12 +16,6 @@ class BookInterface(metaclass=ABCMeta):
     @abstractmethod
     def __init__(self) -> None:
         ...
-
-
-class SingleBookInstanceViolation(BaseException):
-
-    def __init__(self) -> None:
-        super().__init__("Single Book Instance Violation")
 
 
 class Book(BookInterface):
