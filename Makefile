@@ -1,6 +1,5 @@
 test:
-	pytest --cov-report term-missing --cov-report html --cov-branch \
-           --cov bitchat/
+	pytest --cov-report term-missing --cov-report html --cov-branch --cov bitchat/
 
 lint:
 	@echo
@@ -8,11 +7,11 @@ lint:
 	@echo
 	flake8 .
 	@echo
-	mypy .
+	mypy -p bitchat
 	@echo
 	bandit -r bitchat/
 	@echo
-	pip-audit
+	pip-audit --ignore-vuln GHSA-43fp-rhv2-5gv8
 
 format:
 	isort .
@@ -20,4 +19,4 @@ format:
 	pyupgrade --py310-plus **/*.py
 
 install_hooks:
-	scripts/install_hooks.sh
+	bash scripts/install_hooks.sh
