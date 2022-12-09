@@ -83,7 +83,7 @@ redis = ["redis (>=2.10.5)"]
 
 [[package]]
 name = "certifi"
-version = "2022.9.24"
+version = "2022.12.7"
 description = "Python package for providing Mozilla's CA Bundle."
 category = "dev"
 optional = false
@@ -405,7 +405,7 @@ pip = "*"
 
 [[package]]
 name = "pip-audit"
-version = "2.4.7"
+version = "2.4.8"
 description = "A tool for scanning Python environments for known vulnerabilities"
 category = "dev"
 optional = false
@@ -415,7 +415,7 @@ python-versions = ">=3.7"
 CacheControl = {version = ">=0.12.10", extras = ["filecache"]}
 cyclonedx-python-lib = ">=2.0.0,<2.5.0 || >2.5.0"
 html5lib = ">=1.1"
-packaging = ">=21.0.0"
+packaging = ">=21.0.0,<22.0.0"
 pip-api = ">=0.0.28"
 pip-requirements-parser = ">=31.2.0"
 resolvelib = ">=0.8.0"
@@ -429,18 +429,18 @@ test = ["coverage[toml]", "pretend", "pytest", "pytest-cov"]
 
 [[package]]
 name = "pip-requirements-parser"
-version = "31.2.0"
+version = "32.0.0"
 description = "pip requirements parser - a mostly correct pip requirements parsing library because it uses pip's own code."
 category = "dev"
 optional = false
 python-versions = ">=3.6.*"
 
 [package.dependencies]
-packaging = "*"
+packaging = "<22.0.0"
 
 [package.extras]
 docs = ["Sphinx (>=3.3.1)", "doc8 (>=0.8.1)", "sphinx-rtd-theme (>=0.5.0)"]
-testing = ["pytest (>=6)", "pytest-xdist (>=2)"]
+testing = ["aboutcode-toolkit (>=6.0.0)", "black", "pytest (>=6,!=7.0.0)", "pytest-xdist (>=2)"]
 
 [[package]]
 name = "platformdirs"
@@ -465,6 +465,14 @@ python-versions = ">=3.6"
 [package.extras]
 dev = ["pre-commit", "tox"]
 testing = ["pytest", "pytest-benchmark"]
+
+[[package]]
+name = "pyasn1"
+version = "0.4.8"
+description = "ASN.1 types and codecs"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "pycodestyle"
@@ -606,6 +614,17 @@ pygments = ">=2.6.0,<3.0.0"
 jupyter = ["ipywidgets (>=7.5.1,<8.0.0)"]
 
 [[package]]
+name = "rsa"
+version = "4.9"
+description = "Pure-Python RSA implementation"
+category = "main"
+optional = false
+python-versions = ">=3.6,<4"
+
+[package.dependencies]
+pyasn1 = ">=0.1.3"
+
+[[package]]
 name = "setuptools"
 version = "65.6.3"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
@@ -709,7 +728,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "1bdc82ea2e26690012af1d8241702770f2336444db44b83a0b8b0725f682f5ea"
+content-hash = "7724d77307457c6d5c8dadc3e7b4d8fd9d86bc2419e19fcf841408b82a0ab3f0"
 
 [metadata.files]
 attrs = [
@@ -754,8 +773,8 @@ cachecontrol = [
     {file = "CacheControl-0.12.11.tar.gz", hash = "sha256:a5b9fcc986b184db101aa280b42ecdcdfc524892596f606858e0b7a8b4d9e144"},
 ]
 certifi = [
-    {file = "certifi-2022.9.24-py3-none-any.whl", hash = "sha256:90c1a32f1d68f940488354e36370f6cca89f0f106db09518524c88d6ed83f382"},
-    {file = "certifi-2022.9.24.tar.gz", hash = "sha256:0d9c601124e5a6ba9712dbc60d9c53c21e34f5f641fe83002317394311bdce14"},
+    {file = "certifi-2022.12.7-py3-none-any.whl", hash = "sha256:4ad3232f5e926d6718ec31cfc1fcadfde020920e278684144551c91769c7bc18"},
+    {file = "certifi-2022.12.7.tar.gz", hash = "sha256:35824b4c3a97115964b408844d64aa14db1cc518f6562e8d7261699d1350a9e3"},
 ]
 charset-normalizer = [
     {file = "charset-normalizer-2.1.1.tar.gz", hash = "sha256:5a3d016c7c547f69d6f81fb0db9449ce888b418b5b9952cc5e6e66843e9dd845"},
@@ -1000,12 +1019,12 @@ pip-api = [
     {file = "pip_api-0.0.30-py3-none-any.whl", hash = "sha256:2a0314bd31522eb9ffe8a99668b0d07fee34ebc537931e7b6483001dbedcbdc9"},
 ]
 pip-audit = [
-    {file = "pip_audit-2.4.7-py3-none-any.whl", hash = "sha256:a99f825ee431a89b89981c4e9e6eaacff5af3233783f2f5d79fe03306dc378ce"},
-    {file = "pip_audit-2.4.7.tar.gz", hash = "sha256:f87b37b6db5317a3f5ecebc202b5d4401958b5e4bd05b39d7b230bdc6f63c34b"},
+    {file = "pip_audit-2.4.8-py3-none-any.whl", hash = "sha256:40876d6ad6adf5ac64fba1ecef034db9804c35c2c18f7c22cb7b11b382c10df9"},
+    {file = "pip_audit-2.4.8.tar.gz", hash = "sha256:a45540ab0c5a9311315ca42c78fa8f72cf3598d5968a67d883d2d6194eda598c"},
 ]
 pip-requirements-parser = [
-    {file = "pip-requirements-parser-31.2.0.tar.gz", hash = "sha256:8c2a6f8e091ac2693824a5ef4e3b250226e34f74a20a91a87b9ab0714b47788f"},
-    {file = "pip_requirements_parser-31.2.0-py3-none-any.whl", hash = "sha256:22fa213a987913385b2484d5698ecfa1d9cf4154978cdf929085548af55355b0"},
+    {file = "pip-requirements-parser-32.0.0.tar.gz", hash = "sha256:5159b8a9485a5a0d0254a29c9bd8b8ce66db2eb9a1a0244c64dfce43f7f2ac90"},
+    {file = "pip_requirements_parser-32.0.0-py3-none-any.whl", hash = "sha256:aa664781e69f82ecefda542d5210aa5b0f6533be95aea39a5453943db09359ed"},
 ]
 platformdirs = [
     {file = "platformdirs-2.6.0-py3-none-any.whl", hash = "sha256:1a89a12377800c81983db6be069ec068eee989748799b946cce2a6e80dcc54ca"},
@@ -1014,6 +1033,10 @@ platformdirs = [
 pluggy = [
     {file = "pluggy-1.0.0-py2.py3-none-any.whl", hash = "sha256:74134bbf457f031a36d68416e1509f34bd5ccc019f0bcc952c7b909d06b37bd3"},
     {file = "pluggy-1.0.0.tar.gz", hash = "sha256:4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159"},
+]
+pyasn1 = [
+    {file = "pyasn1-0.4.8-py2.py3-none-any.whl", hash = "sha256:39c7e2ec30515947ff4e87fb6f456dfc6e84857d34be479c9d4a4ba4bf46aa5d"},
+    {file = "pyasn1-0.4.8.tar.gz", hash = "sha256:aef77c9fb94a3ac588e87841208bdec464471d9871bd5050a287cc9a475cd0ba"},
 ]
 pycodestyle = [
     {file = "pycodestyle-2.10.0-py2.py3-none-any.whl", hash = "sha256:8a4eaf0d0495c7395bdab3589ac2db602797d76207242c17d470186815706610"},
@@ -1096,6 +1119,10 @@ resolvelib = [
 rich = [
     {file = "rich-12.6.0-py3-none-any.whl", hash = "sha256:a4eb26484f2c82589bd9a17c73d32a010b1e29d89f1604cd9bf3a2097b81bb5e"},
     {file = "rich-12.6.0.tar.gz", hash = "sha256:ba3a3775974105c221d31141f2c116f4fd65c5ceb0698657a11e9f295ec93fd0"},
+]
+rsa = [
+    {file = "rsa-4.9-py3-none-any.whl", hash = "sha256:90260d9058e514786967344d0ef75fa8727eed8a7d2e43ce9f4bcf1b536174f7"},
+    {file = "rsa-4.9.tar.gz", hash = "sha256:e38464a49c6c85d7f1351b0126661487a7e0a14a50f1675ec50eb34d4f20ef21"},
 ]
 setuptools = [
     {file = "setuptools-65.6.3-py3-none-any.whl", hash = "sha256:57f6f22bde4e042978bcd50176fdb381d7c21a9efa4041202288d3737a0c6a54"},

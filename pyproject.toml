@@ -7,6 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+rsa = "*"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -22,6 +23,7 @@ pep8-naming = "*"
 pyupgrade = "*"
 bandit = "*"
 pip-audit = "*"
+
 
 [build-system]
 requires = ["poetry-core"]

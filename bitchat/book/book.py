@@ -9,7 +9,7 @@ from __future__ import annotations
 from abc import ABCMeta, abstractmethod, abstractproperty
 from typing import Optional
 
-from ..errors.singleBookInstanceViolation import SingleBookInstanceViolation
+from ..errors.single_instance_violation import SingleInstanceViolation
 from .message import Message
 
 
@@ -49,7 +49,7 @@ class Book(BookInterface):
         # the master node. Therefore, this class follows the pattern of
         # Singleton
         if Book.__instance is not None:
-            raise SingleBookInstanceViolation
+            raise SingleInstanceViolation
 
         # The ID (__id) of a book is its primary identifier. It is used to
         # keep track of the different instances of the Book that handles
@@ -76,12 +76,13 @@ class Book(BookInterface):
         messages = ""
         for message in self.__messages:
             messages += f"\nIndex --> {self.__messages.index(message)} | " + \
-                f"Timestamp --> {message.header.timestamp} | receiver " + \
+                f"Timestamp --> {message.header.timestamp} | Receiver " + \
                 f"--> {message.header.receiver}"
 
         return f"Book(ID: {self.__id}, First Node: {self.__first_node} " + \
                f"Lenght: {len(self.__messages)})" + \
                f"\nMessages: {messages}"
+        # Index --> 0 Timestamp --> 16034902492 | Receiver --> 0x3801974283f31
 
     def add_message(self, message: Message) -> None:
         self.__messages.append(message)

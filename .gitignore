@@ -14,3 +14,12 @@ htmlcov/
 __pycache__
 .mypy_cache
 .pytest_cache
+
+# key
+private.pem
+
+# IDE
+.idea/
+
+# Dev experiment
+a.py

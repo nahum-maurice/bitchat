@@ -2,8 +2,9 @@ from typing import Optional
 
 import pytest
 
-from bitchat.book.book import Book, SingleBookInstanceViolation
+from bitchat.book.book import Book
 from bitchat.book.message import Message, MessageHeader
+from bitchat.errors.single_instance_violation import SingleInstanceViolation
 
 
 def one_instance() -> None:
@@ -44,7 +45,7 @@ def adding_message() -> None:
 def test_book() -> None:
     one_instance()
 
-    with pytest.raises(SingleBookInstanceViolation):
+    with pytest.raises(SingleInstanceViolation):
         # Should not allow multiple instances
         second_instance()
 
