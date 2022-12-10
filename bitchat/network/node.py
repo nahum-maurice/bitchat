@@ -61,7 +61,7 @@ class Node(NodeInterface):
 
         self.__private_key: PrivateKey = private
         self.__public_key: PublicKey = public
-        self.__timestamp: str = ""
+        self.__createdAt: str = ""
 
     @property
     def pub(self) -> str:

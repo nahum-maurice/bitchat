@@ -35,6 +35,10 @@ class NetworkInterface(metaclass=ABCMeta):
         """"""
 
     @abstractmethod
+    def join(self, node: Node, signature: str) -> None:
+        """"""
+
+    @abstractmethod
     def __repr__(self) -> str:
         """"""
 
@@ -51,6 +55,11 @@ class Network(NetworkInterface):
         if Network.__instance is not None:
             raise SingleInstanceViolation
         else:
+            # TODO: Try to reach other nodes and verify that they don't have
+            #       any instances of network. If found, raise the single
+            #       instance violation exception. Otherwise, acquire a lock
+            #       and prevent other nodes of starting a network with a TTL
+
             # Each instance of the network has a unique identifier
             self.__id: str = ""
 
@@ -60,6 +69,10 @@ class Network(NetworkInterface):
 
             # All added nodes to the network
             self.__nodes: list[Node] = []
+
+            # TODO: When the process ends, inform other nodes that they can
+            #       connect and start connecting to the newly created network,
+            #       with the initiating node as a master Node.
 
     @property
     def size(self) -> int:
@@ -91,6 +104,14 @@ class Network(NetworkInterface):
         the majority of the nodes should be in difficulty to contact him.
         """
         self.__master = None
+
+    def join(self, node: Node, signature: str) -> None:
+        """
+        An existing node, to join the network should send a message that is
+        signed by its private key. Once verified, the Network creates with
+        it a connection.
+        """
+        # TODO
 
     def __repr__(self) -> str:
         """
