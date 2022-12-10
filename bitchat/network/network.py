@@ -6,47 +6,17 @@ It's not a real network in the sense that it does not emphasis on the
 connection between nodes, but the goal is to find a way to obtain
 consensus when it comes to taking actions on the Book
 """
-from __future__ import annotations
-
-from abc import ABCMeta, abstractmethod, abstractproperty
 from typing import Optional
 
 from ..errors.single_instance_violation import SingleInstanceViolation
+from ..interfaces.network import NetworkInterface
 from .node import Node
-
-
-class NetworkInterface(metaclass=ABCMeta):
-    def __init__(self, first: Node) -> None:
-        """"""
-    @abstractproperty
-    def size(self) -> int:
-        """"""
-
-    @abstractmethod
-    def instance(self) -> Optional[NetworkInterface]:
-        """"""
-
-    @abstractmethod
-    def elect_master(self, candidate: Node) -> None:
-        """"""
-
-    @abstractmethod
-    def revoke_master(self) -> None:
-        """"""
-
-    @abstractmethod
-    def join(self, node: Node, signature: str) -> None:
-        """"""
-
-    @abstractmethod
-    def __repr__(self) -> str:
-        """"""
 
 
 class Network(NetworkInterface):
 
     # The unique instance of the network
-    __instance: Network | None = None
+    __instance: 'Network' | None = None
 
     # The version of the system
     version: int = 0
@@ -82,13 +52,13 @@ class Network(NetworkInterface):
         return len(self.__nodes)
 
     @staticmethod
-    def instance() -> Optional[Network]:
+    def instance() -> Optional['Network']:
         """
         This returns the single instance of Network if it exists.
         """
         return Network.__instance
 
-    def elect_master(self, candidate: Node) -> None:
+    def elect_master(self, candidate: Node) -> None:  # type: ignore[override]
         """
         The process of electing a master should take place only under the
         condition that there is not any master ==> self.__master == None
@@ -105,7 +75,7 @@ class Network(NetworkInterface):
         """
         self.__master = None
 
-    def join(self, node: Node, signature: str) -> None:
+    def join(self, node: Node, signature: str) -> None:  # type: ignore[override]
         """
         An existing node, to join the network should send a message that is
         signed by its private key. Once verified, the Network creates with

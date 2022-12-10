@@ -4,35 +4,12 @@ Written by Nahum Maurice on Thur, December 8, 2022
 This is the data structure that contains all messages. It's public, and is
 shared by all the nodes in the network.
 """
-from __future__ import annotations
 
-from abc import ABCMeta, abstractmethod, abstractproperty
 from typing import Optional
 
 from ..errors.single_instance_violation import SingleInstanceViolation
+from ..interfaces.book import BookInterface
 from .message import Message
-
-
-class BookInterface(metaclass=ABCMeta):
-
-    def __init__(self) -> None:
-        """"""
-
-    @abstractmethod
-    def instance(self) -> Optional[BookInterface]:
-        """"""
-
-    @abstractproperty
-    def messages(self) -> list[Message]:
-        """"""
-
-    @abstractmethod
-    def __repr__(self) -> str:
-        """"""
-
-    @abstractmethod
-    def add_message(self, message: Message) -> None:
-        """"""
 
 
 class Book(BookInterface):
@@ -82,15 +59,14 @@ class Book(BookInterface):
         return f"Book(ID: {self.__id}, First Node: {self.__first_node} " + \
                f"Lenght: {len(self.__messages)})" + \
                f"\nMessages: {messages}"
-        # Index --> 0 Timestamp --> 16034902492 | Receiver --> 0x3801974283f31
 
-    def add_message(self, message: Message) -> None:
+    def add_message(self, message: Message) -> None:  # type: ignore[override]
         self.__messages.append(message)
 
     @staticmethod
-    def instance() -> Optional[Book]:
+    def instance() -> Optional['Book']:
         return Book.__instance
 
     @property
-    def messages(self) -> list[Message]:
+    def messages(self) -> list[Message]:  # type: ignore[override]
         return self.__messages

@@ -6,9 +6,11 @@ a map containing the message data and some meta data
 """
 from dataclasses import dataclass
 
+from ..interfaces.message import MessageHeaderInterface, MessageInterface
+
 
 @dataclass
-class MessageHeader:
+class MessageHeader(MessageHeaderInterface):
 
     # The receiver public address, encrypted with his public key.
     receiver: str
@@ -25,7 +27,7 @@ class MessageHeader:
 
 
 @dataclass
-class Message:
+class Message(MessageInterface):
 
     # Contains both encrypted and non-encrypted meta data, essentially
     # all identifiable data are encrypted.

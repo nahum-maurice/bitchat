@@ -6,37 +6,11 @@ It's not a real network in the sense that it does not emphasis on the
 connection between nodes, but the goal is to find a way to obtain
 consensus when it comes to taking actions on the Book
 """
-from abc import ABCMeta, abstractmethod, abstractproperty
-
 from rsa import PrivateKey, PublicKey
 
 from ..book.book import Book
+from ..interfaces.node import NodeInterface
 from ..utils.key_generator import get_keys
-
-
-class NodeInterface(metaclass=ABCMeta):
-    def __init__(self) -> None:
-        """"""
-
-    @abstractproperty
-    def pub(self) -> str:
-        """"""
-
-    @abstractmethod
-    def save(self) -> None:
-        """"""
-
-    @abstractmethod
-    def send_message(self, message: str, book: Book) -> None:
-        """"""
-
-    @abstractmethod
-    def scan_messages(self, book: Book) -> None:
-        """"""
-
-    @abstractmethod
-    def __repr__(self) -> str:
-        """"""
 
 
 class Node(NodeInterface):
@@ -75,7 +49,7 @@ class Node(NodeInterface):
         """
         # TODO
 
-    def send_message(self, message: str, book: Book) -> None:
+    def send_message(self, message: str, book: Book) -> None:  # type: ignore[override]
         """
         This serves to send message in the network by the node. To send a
         message in the network, the node should encrypt the message with
@@ -84,7 +58,7 @@ class Node(NodeInterface):
         """
         # TODO
 
-    def scan_messages(self, book: Book) -> None:
+    def scan_messages(self, book: Book) -> None:  # type: ignore[override]
         """
         This allows the node to scan all the messages in the Book, and to
         reconstitute his messages by successfully verify the messages, which
