@@ -13,7 +13,7 @@ lint:
 	@echo
 	bandit -r bitchat/
 	@echo
-	pip-audit --ignore-vuln GHSA-43fp-rhv2-5gv8
+	pip-audit --ignore-vuln GHSA-hcpj-qp55-gfph
 
 format:
 	isort .
