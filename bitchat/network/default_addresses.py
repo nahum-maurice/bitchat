@@ -7,8 +7,7 @@ each new node that are trying to connect should contact.
 """
 from .data_structures import Address
 
-
 # TODO Should be replaced by actual addresses
 DEFAULT_ADDRESSES = (
-    Address("0.0.0.0", 0),
+    Address("127.0.0.1", 0),
 )
