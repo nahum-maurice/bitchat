@@ -1,4 +1,5 @@
 from abc import ABCMeta, abstractmethod, abstractproperty
+from typing import Optional
 
 from .message import MessageInterface
 
@@ -9,7 +10,7 @@ class BookInterface(metaclass=ABCMeta):
         """"""
 
     @abstractmethod
-    def instance(self) -> 'BookInterface' | None:
+    def instance(self) -> Optional['BookInterface']:
         """"""
 
     @abstractproperty
@@ -21,5 +22,5 @@ class BookInterface(metaclass=ABCMeta):
         """"""
 
     @abstractmethod
-    def add_message(self, message: 'MessageInterface') -> None:
+    def add_message(self, message: MessageInterface) -> None:
         """"""

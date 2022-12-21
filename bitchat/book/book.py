@@ -4,6 +4,8 @@ Written by Nahum Maurice on Thur, December 8, 2022
 This is the data structure that contains all messages. It's public, and is
 shared by all the nodes in the network.
 """
+from typing import Optional
+
 from ..errors.single_instance_violation import SingleInstanceViolation
 from ..interfaces.book import BookInterface
 from .message import Message
@@ -12,7 +14,7 @@ from .message import Message
 class Book(BookInterface):
 
     # One single instance of the class
-    __instance: 'Book' | None = None
+    __instance: Optional['Book'] = None
 
     # The algorithm version
     __version = 0
@@ -61,7 +63,7 @@ class Book(BookInterface):
         self.__messages.append(message)
 
     @staticmethod
-    def instance() -> 'Book' | None:
+    def instance() -> Optional['Book']:
         return Book.__instance
 
     @property
