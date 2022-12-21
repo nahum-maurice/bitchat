@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod, abstractproperty
 
-from .book import BookInterface
+from .book_interface import BookInterface
 
 
 class NodeInterface(metaclass=ABCMeta):

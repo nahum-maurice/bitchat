@@ -1,7 +1,4 @@
-from __future__ import annotations
-
 from abc import ABCMeta, abstractmethod, abstractproperty
-from typing import Optional
 
 from .message import MessageInterface
 
@@ -12,11 +9,11 @@ class BookInterface(metaclass=ABCMeta):
         """"""
 
     @abstractmethod
-    def instance(self) -> Optional['BookInterface']:
+    def instance(self) -> 'BookInterface' | None:
         """"""
 
     @abstractproperty
-    def messages(self) -> list['MessageInterface']:
+    def messages(self) -> list[MessageInterface]:
         """"""
 
     @abstractmethod
